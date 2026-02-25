@@ -12,3 +12,12 @@
 .udemy-dual-subtitle.pending {
   opacity: 0.6;
 }
+
+[class*='well--container'] {
+  flex-direction: column;
+  align-items: center;
+}
+
+[class*='well--container'] [class*='well--text'] {
+  padding-block: 0;
+}

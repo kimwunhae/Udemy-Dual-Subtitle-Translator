@@ -7,6 +7,7 @@ const SUBTITLE_SELECTORS = [
   '[data-purpose="captions-text"]',
   '[class*="captions-text"]',
   '[class*="captions-display"]',
+  '[class*="well--container"]',
 ];
 
 const VTT_URL_PATTERN = /\.vtt(\?|$)/i;
@@ -30,7 +31,8 @@ async function refreshSettings() {
 function isInMainCaptionArea(element: HTMLElement) {
   const isCueText =
     element.getAttribute('data-purpose') === 'captions-cue-text' ||
-    element.className.includes('captions-cue-text');
+    element.className.includes('captions-cue-text') ||
+    element.className.includes('well--container');
   return isCueText;
 }
 
