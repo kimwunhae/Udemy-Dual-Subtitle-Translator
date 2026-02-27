@@ -10,6 +10,13 @@ export default defineConfig({
   build: {
     outDir: "dist",
     emptyOutDir: true,
+    watch: {
+      chokidar: {
+        usePolling: true,
+        interval: 300,
+        binaryInterval: 500
+      }
+    },
     rollupOptions: {
       input: {
         popup: resolve(__dirname, "popup.html"),
