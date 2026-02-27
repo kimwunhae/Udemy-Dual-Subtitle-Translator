@@ -12,7 +12,7 @@ This Chrome extension translates Udemy lecture captions into a selected language
 
 <div align="center">
 
-![Popup UI](docs/screenshots/popup-ui.png)
+![Popup UI](docs/screenshots/extension-popup-ui-20260227.png)
 ![Dual Subtitle](docs/screenshots/player-dual-subtitle.png)
 
 </div>
