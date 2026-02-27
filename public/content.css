@@ -21,7 +21,7 @@
 }
 
 :where([class*='well--container'] [class*='well--text']) {
-  padding-block: 0;
+  padding-block: 0 !important;
 }
 
 :where([data-purpose='captions-cue-text']) {
