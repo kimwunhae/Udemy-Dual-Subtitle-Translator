@@ -21,10 +21,13 @@ This Chrome extension translates Udemy lecture captions into a selected language
 
 - Translation ON/OFF toggle
 - Select target language
+- Preserve Terms (custom glossary): keep specified terms untranslated
+- Auto technical-term protection with token scoring (reduces over-protection)
 - Render translated captions below the original (dual subtitles)
 - Reuse cached translations for repeated sentences
 - Prefetch VTT captions to reduce perceived latency
 - Automatically ignore sprite VTTs (thumb-sprites)
+- Polling-based watch mode for stable file change detection on WSL/mounted drives
 
 ## Tech Stack
 
@@ -49,7 +52,8 @@ This Chrome extension translates Udemy lecture captions into a selected language
 1. Open a Udemy lecture page.
 2. Click the extension icon and enable translation.
 3. Select the target language.
-4. Translated captions appear below the original captions automatically.
+4. (Optional) Add terms in **Preserve Terms** (one per line) to keep them in original form.
+5. Translated captions appear below the original captions automatically.
 
 ## Dev Reload (Auto Refresh)
 
@@ -62,6 +66,7 @@ Watches `dist` build output and reloads the extension automatically.
 3. Load the `dist` folder in Chrome Extensions
 
 When the Udemy page is open, changes are applied automatically.
+If you are using WSL with a mounted Windows path (e.g. `/mnt/c/...`), polling watch is enabled to improve change detection reliability.
 
 ## Icon Assets
 
@@ -96,6 +101,11 @@ When the Udemy page is open, changes are applied automatically.
   - Both content and background caches have max size limits.
 - Text normalization
   - Normalizes whitespace and removes speaker labels to improve VTT-caption matching.
+- Term preservation
+  - Translation input is preprocessed by replacing protected terms with temporary tokens and restoring them after translation.
+  - Sources of protected terms:
+    - User-defined `Preserve Terms` list from popup settings.
+    - Auto-detected technical tokens via a scoring heuristic (uppercase acronyms, camel/pascal patterns, separators, versions, etc.).
 
 ## Notes
 
